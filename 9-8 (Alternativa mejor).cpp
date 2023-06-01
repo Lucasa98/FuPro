@@ -30,6 +30,7 @@ int main() {
 	
 			M[25][j] += M[i][j];	//sumamos al sub-total de la sucursal j
 			M[i][4] += M[i][j];		//sumamos al sub-total del articulo i
+			M[25][4] += M[i][j];	//total de la empresa
 		}
 	}
 	
