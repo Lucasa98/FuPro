@@ -46,15 +46,29 @@ int main() {
 	cout << "\n=====================================" << endl;
 	
 	/// a) Recaudación de cada sucursal
+	vector<float> recaudaciones(4);
 	for(size_t i=0; i<M.size(1)-1; ++i){
-		float total = 0;
-		for(size_t j=0; j<M.size(0); ++j){
-			total += M[j][i]*precios[j];	// unidades*precio
+		recaudaciones[i] = 0;
+		for(size_t j=0; j<recaudaciones.size(); ++j){
+			recaudaciones[i] += M[j][i]*precios[j];	// unidades*precio
 		}
-		cout << "La sucursal " << i << " recaudo $" << total << endl;
+		cout << "La sucursal " << i << " recaudo $" << recaudaciones[i] << endl;
 	}
 	
+	/// b) Recaudacion total de la empresa
+	float totalEmpresa = 0;
+	for(size_t i=0; i<recaudaciones.size(); ++i){
+		totalEmpresa += recaudaciones[i];	// total unidades por articulo*precio articulo
+	}
+	cout << "La empresa recaudo $" << totalEmpresa << " en total" << endl;
 	
+	/// c) La sucursal que mas recaudo
+	size_t posMayor = 0;
+	for(size_t i=0; i<recaudaciones.size(); ++i){
+		if(recaudaciones[i] > recaudaciones[posMayor])
+			posMayor = i;
+	}
+	cout << "La empresa que mas recaudo fue " << posMayor << endl;
 	
 	return 0;
 }
